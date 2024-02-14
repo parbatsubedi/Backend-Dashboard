@@ -9,7 +9,7 @@ use App\Models\TransactionEvent;
 use App\Models\Admin;
 use App\Models\User;
 use App\Models\UserExecutePayment;
-use App\Wallet\Dashboard\Repository\DashboardRepository;
+use App\Functions\Dashboard\Repository\DashboardRepository;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;

@@ -11,7 +11,7 @@ use App\Http\Resources\TransactionEventResource;
 use Illuminate\Support\Facades\Log;
 use Rap2hpoutre\FastExcel\FastExcel;
 use Illuminate\Queue\SerializesModels;
-use App\Wallet\Excel\ExportExcelHelper;
+use App\Functions\Excel\ExportExcelHelper;
 use Illuminate\Support\Facades\Storage;
 use Box\Spout\Writer\Style\StyleBuilder;
 use Illuminate\Queue\InteractsWithQueue;
@@ -19,7 +19,7 @@ use OpenSpout\Common\Entity\Style\Style;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Foundation\Http\FormRequest;
-use App\Wallet\Excel\Interfaces\IExportExcel;
+use App\Functions\Excel\Interfaces\IExportExcel;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
 
 class ProcessExcel implements ShouldQueue
@@ -109,7 +109,7 @@ class ProcessExcel implements ShouldQueue
         $exportedFile = $export->exportJobExcel();
         if(strtolower(config('app.name')) == "paywell"){
             $formattedString  = str_replace("/var/www/html/public", "", $exportedFile);
-        }elseif (strtolower(config('app.name')) == "sajilopay"){
+        }elseif (strtolower(config('app.name')) == "parbat"){
             $formattedString  = str_replace("/var/www/html/", "", $exportedFile);
         }else{
             $formattedString  = str_replace("/var/www/html/", "", $exportedFile);

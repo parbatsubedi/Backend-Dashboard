@@ -13,12 +13,13 @@
 
 use App\Models\Admin;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BackendLogController;
 use App\Http\Controllers\BackendUsersController;
-use App\Http\Controllers\RebrandingSettingController;
-use App\Http\Controllers\RoleController;
 use App\Http\Controllers\Setting\SettingController;
+use App\Http\Controllers\RebrandingSettingController;
 
 Route::match(['get', 'post'], '/', [AdminController::class,'login'])->middleware('guest'); //admin login
 Route::group(['prefix' => 'admin'], function () {
@@ -44,9 +45,9 @@ Route::group(['prefix' => 'admin'], function () {
         Route::match(['get', 'post'], '/permission/{user_id}', [BackendUsersController::class,'permission'])->name('backendUser.permission')->middleware('permission:Backend user update permission');
         Route::match(['get', 'post'], '/role/{user_id}', [BackendUsersController::class,'role'])->name('backendUser.role')->middleware('permission:Backend user update role');
 
-        Route::match(['get', 'post'], '/backend-user/profile', 'BackendUsersController@profile')->name('backendUser.profile')->middleware('permission:Backend user update profile');
-        Route::match(['get', 'post'], '/backend-user/change-password', 'BackendUsersController@changePassword')->name('backendUser.changePassword')->middleware('permission:Backend user change password');
-        Route::post('/backend-user/reset-password', 'BackendUsersController@resetPassword')->name('backendUser.resetPassword')->middleware('permission:Backend user reset password');
+        Route::match(['get', 'post'], '/backend-user/profile', [BackendUsersController::class,'profile'])->name('backendUser.profile')->middleware('permission:Backend user update profile');
+        Route::match(['get', 'post'], '/backend-user/change-password', [BackendUsersController::class,'changePassword'])->name('backendUser.changePassword')->middleware('permission:Backend user change password');
+        Route::post('/backend-user/reset-password', [BackendUsersController::class,'resetPassword'])->name('backendUser.resetPassword')->middleware('permission:Backend user reset password');
         // Route::match(['get', 'post'], '/deactivate-User/{user_id}', 'BackendUsersController@deactivateUser')->name('backendUser.deactivate')->middleware('permission:Backend user deactivate');
 
         // Route::get('backend-user-changed-kyc', 'BackendUsersController@kycList')->name('backendUser.kycList')->middleware('permission:KYC list changed by backend user view');
@@ -80,16 +81,20 @@ Route::group(['prefix' => 'admin'], function () {
         // Route::get('/logs/statistics', 'LogController@statistics')->name('admin.log.statistics')->middleware('permission:Statistics log view');
         // Route::get('/logs/development', 'LogController@development')->name('admin.log.development')->middleware('permission:Development log view');
 
-        
+        //config clear route
+        Route::get('/clear-config-cache', function () {
+            Artisan::call('config:clear');
+            return 'Configuration cache cleared successfully.';
+        });
 
         /**
          * General Settings
          */
         Route::match(['get', 'post'], '/settings/general', [SettingController::class,'generalSetting'])->name('settings.general')->middleware('permission:General setting view|General setting update');
 
-        Route::match(['get','post'], 'settings/rebranding', [SettingController::class,'rebrandingSetting'])->name('settings.rebranding')->middleware('permission:Rebranding setting|Rebranding setting update');
+        Route::match(['get','post'], 'settings/rebranding', [SettingController::class,'rebrandingSetting'])->name('settings.rebranding');
 
-        Route::match(['get','post'], 'settings/rebranding-update', [RebrandingSettingController::class,'rebrandingSettingUpdate'])->name('settings.rebrandingUpdate')->middleware('permission:Rebranding setting update');
+        Route::match(['get','post'], 'settings/rebranding-update', [RebrandingSettingController::class,'rebrandingSettingUpdate'])->name('settings.rebrandingUpdate');
         // // Route::get('general-setting', 'GeneralSettingController@index')->name('general.setting.index')->middleware('permission:General page setting view');
         // // Route::match(['get', 'post'], 'general-setting/create', 'GeneralSettingController@create')->name('general.setting.create')->middleware('permission:General page setting create');
         // Route::match(['get', 'post'], 'general-setting/update/{id}', 'GeneralSettingController@update')->name('general.setting.update')->middleware('permission:General page setting update');

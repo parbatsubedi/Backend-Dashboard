@@ -5,10 +5,12 @@ namespace App\Models;
 use App\Traits\StoreSetting;
 use App\Traits\UploadImage;
 use Illuminate\Database\Eloquent\Model;
+use OwenIt\Auditing\Auditable;
+use OwenIt\Auditing\Contracts\Auditable as AuditableContract;
 
-class Setting extends Model
+class Setting extends Model implements AuditableContract
 {
-    use StoreSetting, UploadImage;
+    use StoreSetting, UploadImage, Auditable;
 
     protected static $logAttributes = ['*'];
     //protected static $logOnlyDirty = true;

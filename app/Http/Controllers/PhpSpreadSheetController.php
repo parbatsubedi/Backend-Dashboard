@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Wallet\PhpSpreadSheet\PhpSpreadSheetExportHelper;
-use App\Wallet\Report\Http\Controllers\NRBAnnexReportController;
-use App\Wallet\Report\Repositories\ActiveInactiveUserReportRepository;
-use App\Wallet\Report\Repositories\ActiveInactiveUserSlabReportRepository;
-use App\Wallet\Report\Repositories\NrbAnnexAgentPaymentReportRepository;
-use App\Wallet\Report\Repositories\StatementSettlementBankRepository;
-use App\Wallet\WalletAPI\Microservice\WalletClearanceMicroService;
+use App\Functions\PhpSpreadSheet\PhpSpreadSheetExportHelper;
+use App\Functions\Report\Http\Controllers\NRBAnnexReportController;
+use App\Functions\Report\Repositories\ActiveInactiveUserReportRepository;
+use App\Functions\Report\Repositories\ActiveInactiveUserSlabReportRepository;
+use App\Functions\Report\Repositories\NrbAnnexAgentPaymentReportRepository;
+use App\Functions\Report\Repositories\StatementSettlementBankRepository;
+use App\Functions\WalletAPI\Microservice\WalletClearanceMicroService;
 use Illuminate\Http\Request;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 
@@ -42,8 +42,8 @@ class PhpSpreadSheetController extends Controller
         //Logo
         $activeSheet->mergeCells("A1:J4");
 
-        if (config('app.logo') == 'sajilopay') {
-            $image = public_path('img/sajilopaylogo.png');
+        if (config('app.logo') == 'parbat') {
+            $image = public_path('img/parbatlogo.png');
         } elseif (config('app.logo') == 'icash') {
             $image = public_path('img/icashlogo.png');
         } elseif (config('app.logo') == 'dpaisa') {
@@ -151,8 +151,8 @@ class PhpSpreadSheetController extends Controller
         //Logo
         $activeSheet->mergeCells("A1:J4");
 
-        if (config('app.logo') == 'sajilopay') {
-            $image = public_path('img/sajilopaylogo.png');
+        if (config('app.logo') == 'parbat') {
+            $image = public_path('img/parbatlogo.png');
         } elseif (config('app.logo') == 'icash') {
             $image = public_path('img/icashlogo.png');
         } elseif (config('app.logo') == 'dpaisa') {

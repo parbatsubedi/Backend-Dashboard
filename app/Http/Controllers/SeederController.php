@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\RequestInfo;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Artisan;
 
 class SeederController extends Controller
 {
@@ -21,7 +22,7 @@ class SeederController extends Controller
         }
         //uncomment below line if you face error like STDIN not defined
 //        define('STDIN',fopen("php://stdin","r"));
-        $status = \Artisan::call('db:seed',['--class' => $className,'--force'=>true]);
+        $status = Artisan::call('db:seed',['--class' => $className,'--force'=>true]);
         if($status == 0){
             return redirect()->route('view.seeder')->with('success',$className." successfully executed");
         }else{

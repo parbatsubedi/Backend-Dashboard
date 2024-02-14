@@ -227,7 +227,6 @@ return [
         'FCM'      => LaravelFCM\Facades\FCM::class,
         'FCMGroup' => LaravelFCM\Facades\FCMGroup::class,
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
-        'PDF' => Barryvdh\DomPDF\Facade::class,
     ],
 
 ];

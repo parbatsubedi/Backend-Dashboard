@@ -9,7 +9,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Support\Facades\Log;
 use Rap2hpoutre\FastExcel\FastExcel;
 use Illuminate\Queue\SerializesModels;
-use App\Wallet\Excel\ExportExcelHelper;
+use App\Functions\Excel\ExportExcelHelper;
 use Illuminate\Support\Facades\Storage;
 use Box\Spout\Writer\Style\StyleBuilder;
 use Illuminate\Queue\InteractsWithQueue;
@@ -18,7 +18,7 @@ use App\Models\Microservice\PreTransaction;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Foundation\Http\FormRequest;
-use App\Wallet\Excel\Interfaces\IExportExcel;
+use App\Functions\Excel\Interfaces\IExportExcel;
 use App\Http\Resources\PreTransactionResource;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
 

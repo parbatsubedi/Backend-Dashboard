@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\TransactionEvent;
-use App\Wallet\Dashboard\Interfaces\DashboardStatsRepositoryInterface;
-use App\Wallet\Dashboard\Repository\KYCDashboardRepository;
-use App\Wallet\Dashboard\Repository\NchlBankTransferDashboardRepository;
-use App\Wallet\Dashboard\Repository\NchlLoadDashboardRepository;
-use App\Wallet\Dashboard\Repository\NPayDashboardRepository;
-use App\Wallet\Dashboard\Repository\PayPointDashboardRepository;
+use App\Functions\Dashboard\Interfaces\DashboardStatsRepositoryInterface;
+use App\Functions\Dashboard\Repository\KYCDashboardRepository;
+use App\Functions\Dashboard\Repository\NchlBankTransferDashboardRepository;
+use App\Functions\Dashboard\Repository\NchlLoadDashboardRepository;
+use App\Functions\Dashboard\Repository\NPayDashboardRepository;
+use App\Functions\Dashboard\Repository\PayPointDashboardRepository;
 use Carbon\Carbon;
 
 class DashboardController extends Controller

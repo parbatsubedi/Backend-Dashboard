@@ -8,12 +8,12 @@ use Illuminate\Http\Request;
 class LogController extends Controller
 {
 
-    public function userSession(Request $request)
-    {
-        $length = 15;
-        $sessions = UserLoginHistory::with('user')->latest()->filter($request)->paginate($length);
-        return view('admin.logs.userSession')->with(compact('sessions'));
-    }
+    // public function userSession(Request $request)
+    // {
+    //     $length = 15;
+    //     $sessions = UserLoginHistory::with('user')->latest()->filter($request)->paginate($length);
+    //     return view('admin.logs.userSession')->with(compact('sessions'));
+    // }
 
     public function auditing()
     {

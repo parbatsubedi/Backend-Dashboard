@@ -17,7 +17,7 @@ class RebrandingSettingsSeeder extends Seeder
         $rebrandingSettings = RebrandingSetting::first();
         if (!count(RebrandingSetting::all())) {
             $rebrandingSettings = RebrandingSetting::create([
-                'site_title' => 'Silk Innovation',
+                'site_title' => 'Business Admin Panel',
                 'logo' => null,
                 'favicon' => null,
                 'smtp_email' => null,

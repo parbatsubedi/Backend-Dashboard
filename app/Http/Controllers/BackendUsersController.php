@@ -11,7 +11,7 @@ use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Permission;
-use App\Wallet\BackendUser\Repository\BackendUserRepository;
+use App\Functions\BackendUser\Repository\BackendUserRepository;
 
 class BackendUsersController extends Controller
 {

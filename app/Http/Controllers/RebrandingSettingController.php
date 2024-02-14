@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Models\RebrandingSetting;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\URL;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\QueryException;
@@ -58,27 +59,36 @@ class RebrandingSettingController extends Controller
                 $dbData = RebrandingSetting::first();
                 $updatedEnvFileContents = $envFileContents;
 
-                if ($dbData->smtp_email != $newEmail) {
+                if ($dbData->smtp_email != $newEmail && $dbData->smtp_password != $newPassword) {
                     $updatedEnvFileContents = preg_replace(
                         '/MAIL_FROM_ADDRESS=.*/',
                         "MAIL_FROM_ADDRESS={$newEmail}",
                         $updatedEnvFileContents
                     );
-                }
 
-                if ($dbData->smtp_password != $newPassword) {
                     $updatedEnvFileContents = preg_replace(
                         '/MAIL_PASSWORD=.*/',
                         "MAIL_PASSWORD={$newPassword}",
                         $updatedEnvFileContents
                     );
+                    Artisan::call('config:clear');
                 }
 
                 file_put_contents($envFilePath, $updatedEnvFileContents);
             }
             $setting->update($data);
-            Artisan::call('config:clear');
-
+            Log::info('Calling config:clear');
+            // try {
+                
+            //     Log::info('config:clear executed successfully');
+            // } catch (\Exception $e) {
+            //     Log::error('Error during config:clear: ' . $e->getMessage());
+            // }
+            // URL::to('/clear-config-cache');
+            // dd($clearConfigCacheUrl);
+            // file_get_contents($clearConfigCacheUrl);
+            
+            // Log::info('Redirecting to ' . redirect()->getTargetUrl());
             return redirect()->route('settings.rebranding')->with('success', 'Updated Successfully');
         }
         return view('admin.setting.rebrandingSetting');
