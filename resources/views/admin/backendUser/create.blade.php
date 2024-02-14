@@ -11,7 +11,7 @@
                 </li>
 
                 <li class="breadcrumb-item">
-                    <a >Backend Users</a>
+                    <a >Admin</a>
                 </li>
 
                 <li class="breadcrumb-item active">
@@ -28,7 +28,7 @@
             <div class="col-lg-12">
                 <div class="ibox ">
                     <div class="ibox-title">
-                        <h5>Create backend user</h5>
+                        <h5>Create  Admin</h5>
                     </div>
                     <div class="ibox-content">
                         <form method="post" enctype="multipart/form-data" id="notificationForm">
@@ -82,7 +82,7 @@
 
                             <div class="form-group row">
                                 <div class="col-sm-4 col-sm-offset-2">
-                                    <button class="btn btn-primary btn-sm" type="submit">Create backend user</button>
+                                    <button class="btn btn-primary btn-sm" type="submit">Create  Admin</button>
                                 </div>
                             </div>
 

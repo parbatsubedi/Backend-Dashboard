@@ -42,24 +42,12 @@ class RolesAndPermissionsSeeder extends Seeder
             'Backend user update role',
             'Backend user reset password',
             'Backend user create',
-            'Backend user deactivate',
 
             'Roles view',
             'Role create',
             'Role edit',
 
             'Backend user log view',
-
-            'User session log view',
-            'Auditing log view',
-            'Profiling log view',
-            'Statistics log view',
-            'Development log view',
-
-            'Notification view',
-            'Notification create',
-            'Send notification to user',
-
 
             'Rebranding setting',
             'Rebranding setting update',

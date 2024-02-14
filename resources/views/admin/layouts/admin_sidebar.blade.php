@@ -53,16 +53,16 @@ $url = url()->current();
 
             @if(auth()->user()->hasPermissionTo('Backend users view') || auth()->user()->hasPermissionTo('Backend user create'))
                 <li @if($url == route('backendUser.view') || $url == route('backendUser.create'))class="active" @endif>
-                    <a href="#"><i class="fa fa-vcard"></i> <span class="nav-label">Backend Users</span><span
+                    <a href="#"><i class="fa fa-vcard"></i> <span class="nav-label">Admin</span><span
                             class="fa arrow"></span></a>
                     <ul class="nav nav-second-level collapse">
 
                         @can('Backend users view')
-                            <li><a href="{{ route('backendUser.view') }}">View backend users</a></li>
+                            <li><a href="{{ route('backendUser.view') }}">View Admin</a></li>
                         @endcan
 
                         @can('Backend user create')
-                            <li><a href="{{ route('backendUser.create') }}">Create backend user</a></li>
+                            <li><a href="{{ route('backendUser.create') }}">Create  Admin</a></li>
                         @endcan
 
                     </ul>
@@ -87,36 +87,29 @@ $url = url()->current();
                 </li>
             @endif
 
-
-
-
-
-
-
-
-            @if(auth()->user()->hasAnyPermission(['User session log view', 'Backend user log view' , 'Auditing log view', 'Profiling log view', 'Statistics log view', 'Development log view','Api log', 'Model log']))
+            {{-- @if(auth()->user()->hasAnyPermission(['User session log view', 'Backend user log view' , 'Auditing log view', 'Profiling log view', 'Statistics log view', 'Development log view','Api log', 'Model log']))
                 <li @if(preg_match('/log/i', $url)) class="active" @endif>
                     <a href="#"><i class="fa fa-th-list"></i> <span class="nav-label">Logs</span><span
                             class="fa arrow"></span></a>
                     <ul class="nav nav-second-level collapse">
-                        {{--@can('User session log view')
+                        @can('User session log view')
                             <li><a href="{{ route('admin.log.userSession') }}">User Session Log</a></li>
-                        @endcan--}}
+                        @endcan
 
                         @can('Backend user log view')
                             <li><a href="{{ route('backendLog.all') }}">Backend Log</a></li>
                         @endcan
-                        {{--@can('Api log')
+                        @can('Api log')
                             <li><a href="{{ route('apiLog.all') }}">API Log</a></li>
 
-                        @endcan--}}
+                        @endcan
 
-                        {{-- @can('Model log')
+                        @can('Model log')
                             <li><a href="{{ route('model-logs') }}">Model Log</a></li>
-                        @endcan --}}
+                        @endcan
 
 
-                        {{--@can('Auditing log view')
+                        @can('Auditing log view')
                         <li><a href="{{ route('admin.log.auditing') }}">Auditing Log</a></li>
                         @endcan
                         @can('Profiling log view')
@@ -127,10 +120,10 @@ $url = url()->current();
                         @endcan
                         @can('Development log view')
                         <li><a href="{{ route('admin.log.development') }}">Development Log</a></li>
-                        @endcan--}}
+                        @endcan
                     </ul>
                 </li>
-            @endif
+            @endif --}}
 
             <li @if(preg_match('/settings/i', $url)) class="active" @endif>
                 <a href="#"><i class="fa fa-cogs"></i> <span class="nav-label">Settings</span><span

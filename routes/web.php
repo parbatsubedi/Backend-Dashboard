@@ -38,7 +38,7 @@ Route::group(['prefix' => 'admin'], function () {
         // Route::post('/dashboard/yearly-graph-npay', "AdminController@nPayYearly")->name('admin.dashboard.npay.yearly'); //admin yearly graphStat Dashboard KYC
 
         /**
-         * Backend users
+         * Admin
          */
         Route::get('/backend-user', [BackendUsersController::class,'view'])->name('backendUser.view')->middleware('permission:Backend users view');
         Route::match(['get', 'post'], '/backend-user/create', [BackendUsersController::class,'create'])->name('backendUser.create')->middleware('permission:Backend user create');

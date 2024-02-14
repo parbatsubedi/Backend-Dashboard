@@ -77,18 +77,6 @@ class RebrandingSettingController extends Controller
                 file_put_contents($envFilePath, $updatedEnvFileContents);
             }
             $setting->update($data);
-            Log::info('Calling config:clear');
-            // try {
-                
-            //     Log::info('config:clear executed successfully');
-            // } catch (\Exception $e) {
-            //     Log::error('Error during config:clear: ' . $e->getMessage());
-            // }
-            // URL::to('/clear-config-cache');
-            // dd($clearConfigCacheUrl);
-            // file_get_contents($clearConfigCacheUrl);
-            
-            // Log::info('Redirecting to ' . redirect()->getTargetUrl());
             return redirect()->route('settings.rebranding')->with('success', 'Updated Successfully');
         }
         return view('admin.setting.rebrandingSetting');

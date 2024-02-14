@@ -62,7 +62,7 @@
 
                             <div class="form-group row">
                                 <div class="col-sm-4 col-sm-offset-2">
-                                    <button class="btn btn-primary btn-sm" type="submit">Create backend user</button>
+                                    <button class="btn btn-primary btn-sm" type="submit">Create  Admin</button>
                                 </div>
                             </div>
 
