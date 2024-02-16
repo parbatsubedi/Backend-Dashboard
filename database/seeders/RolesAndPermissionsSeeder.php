@@ -64,7 +64,7 @@ class RolesAndPermissionsSeeder extends Seeder
                 'name' => 'Parbat Subedi',
                 'email' => 'Parbatsubedi@gmail.com',
                 'password' => bcrypt('password'),
-                'mobile_no' => '9860089363'
+                'mobile_no' => '9843723270'
             ]);
         }
 
